@@ -2,6 +2,8 @@
 
 A React TypeScript application for displaying real-time bus departures using the Entur API.
 
+Deployed to https://langz.github.io/bus-app/
+
 ## Features
 
 - 🚌 Real-time bus departure information
