@@ -1,0 +1,14 @@
+/* Header component styles */
+.app header {
+  margin-bottom: 2rem;
+}
+
+.app h1 {
+  margin-bottom: 0.5rem;
+}
+
+.app h2 {
+  color: #666;
+  font-weight: normal;
+  margin-top: 0;
+}

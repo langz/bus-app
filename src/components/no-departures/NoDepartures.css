@@ -1,0 +1,16 @@
+/* NoDepartures component styles */
+.no-departures {
+  text-align: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.no-departures-message {
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin: 0;
+  font-style: italic;
+}

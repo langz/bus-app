@@ -1,0 +1,79 @@
+/* BusDeparture component styles */
+.departure-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+  transition: all 0.2s ease;
+}
+
+.departure-item:hover {
+  background: #e9ecef;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.departure-item:focus {
+  outline: 3px solid #0056b3;
+  outline-offset: 2px;
+  background: #e3f2fd;
+}
+
+.line-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.line-number {
+  background: #007bff;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.destination {
+  color: #333;
+  font-weight: 500;
+}
+
+.time-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: right;
+}
+
+.aimed-time {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.expected-time {
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.delay-indicator {
+  color: #dc3545;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background: #f8d7da;
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+  margin-left: 0.25rem;
+}
+
+.realtime-indicator {
+  color: #28a745;
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
