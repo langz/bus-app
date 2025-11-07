@@ -38,7 +38,9 @@ function BusDeparture({ call }: BusDepartureProps) {
   };
 
   const hasTimeChange = (): boolean => {
-    return call.aimedArrivalTime !== call.expectedArrivalTime;
+    return (
+      formatTime(call.aimedArrivalTime) !== formatTime(call.expectedArrivalTime)
+    );
   };
 
   const getDelayMinutes = (): number => {
@@ -103,18 +105,16 @@ function BusDeparture({ call }: BusDepartureProps) {
             </span>
 
             <span className="expected-time" aria-hidden="true">
-              ({formatTime(call.expectedArrivalTime)})
+              {formatTime(call.expectedArrivalTime)}
+              {isDelayed() && (
+                <span className="delay-indicator"> +{getDelayMinutes()}m</span>
+              )}
             </span>
             <span className="sr-only">
               Expected departure {formatTime(call.expectedArrivalTime)}, in{" "}
               {getTimeUntilDeparture(call.expectedArrivalTime)}
+              {isDelayed() && `, delayed by ${getDelayMinutes()} minutes`}
             </span>
-
-            {isDelayed() && (
-              <span className="delay-indicator sr-only">
-                Delayed by {getDelayMinutes()} minutes
-              </span>
-            )}
           </>
         ) : (
           <>

@@ -55,7 +55,7 @@ describe("BusDeparture", () => {
     expect(aimedTimeElement).toBeInTheDocument();
     expect(expectedTimeElement).toBeInTheDocument();
     expect(delayIndicator).toBeInTheDocument();
-    expect(delayIndicator?.textContent).toBe("+5m");
+    expect(delayIndicator?.textContent).toBe(" +5m");
   });
 
   it("shows realtime indicator when realtime is true", () => {
