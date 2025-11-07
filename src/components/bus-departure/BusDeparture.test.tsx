@@ -33,9 +33,29 @@ describe("BusDeparture", () => {
   it("renders formatted departure time", () => {
     render(<BusDeparture call={mockCall} />);
 
-    const timeElement = document.querySelector(".expected-time");
+    const timeElement = document.querySelector(".single-time");
     expect(timeElement).toBeInTheDocument();
     expect(timeElement?.textContent).toMatch(/\d{1,2}:\d{2}(\s?(AM|PM))?/);
+  });
+
+  it("shows both times when departure is delayed", () => {
+    const delayedCall: BusCall = {
+      ...mockCall,
+      aimedArrivalTime: "2025-11-07T14:30:00Z",
+      expectedArrivalTime: "2025-11-07T14:35:00Z", // 5 minutes delayed
+    };
+
+    render(<BusDeparture call={delayedCall} />);
+
+    // When times differ, it shows both aimed and expected times
+    const aimedTimeElement = document.querySelector(".aimed-time");
+    const expectedTimeElement = document.querySelector(".expected-time");
+    const delayIndicator = document.querySelector(".delay-indicator");
+
+    expect(aimedTimeElement).toBeInTheDocument();
+    expect(expectedTimeElement).toBeInTheDocument();
+    expect(delayIndicator).toBeInTheDocument();
+    expect(delayIndicator?.textContent).toBe("+5m");
   });
 
   it("shows realtime indicator when realtime is true", () => {

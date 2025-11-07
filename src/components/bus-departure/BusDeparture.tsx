@@ -37,6 +37,10 @@ function BusDeparture({ call }: BusDepartureProps) {
     return new Date(call.expectedArrivalTime) > new Date(call.aimedArrivalTime);
   };
 
+  const hasTimeChange = (): boolean => {
+    return call.aimedArrivalTime !== call.expectedArrivalTime;
+  };
+
   const getDelayMinutes = (): number => {
     const aimed = new Date(call.aimedArrivalTime);
     const expected = new Date(call.expectedArrivalTime);
@@ -49,12 +53,22 @@ function BusDeparture({ call }: BusDepartureProps) {
     const destination = call.destinationDisplay.frontText;
     const timeUntil = getTimeUntilDeparture(call.expectedArrivalTime);
     const departureTime = formatTime(call.expectedArrivalTime);
-    const delayInfo = isDelayed()
-      ? ` Delayed by ${getDelayMinutes()} minutes.`
-      : "";
+    const scheduledTime = formatTime(call.aimedArrivalTime);
+
+    let timeInfo = `Departing in ${timeUntil}`;
+
+    if (hasTimeChange()) {
+      timeInfo += ` at ${departureTime} (scheduled for ${scheduledTime})`;
+      if (isDelayed()) {
+        timeInfo += ` - delayed by ${getDelayMinutes()} minutes`;
+      }
+    } else {
+      timeInfo += ` at ${departureTime}`;
+    }
+
     const realtimeInfo = call.realtime ? " Real-time data available." : "";
 
-    return `Bus line ${lineNumber} to ${destination}. Departing in ${timeUntil} at ${departureTime}.${delayInfo}${realtimeInfo}`;
+    return `Bus line ${lineNumber} to ${destination}. ${timeInfo}.${realtimeInfo}`;
   };
 
   return (
@@ -79,25 +93,37 @@ function BusDeparture({ call }: BusDepartureProps) {
       </div>
 
       <div className="time-info">
-        <span className="aimed-time" aria-hidden="true">
-          {formatTime(call.aimedArrivalTime)}
-        </span>
-        <span className="sr-only">
-          Scheduled departure {formatTime(call.aimedArrivalTime)}
-        </span>
-
-        <span className="expected-time" aria-hidden="true">
-          ({formatTime(call.expectedArrivalTime)})
-        </span>
-        <span className="sr-only">
-          Expected departure {formatTime(call.expectedArrivalTime)}, in{" "}
-          {getTimeUntilDeparture(call.expectedArrivalTime)}
-        </span>
-
-        {isDelayed() && (
+        {hasTimeChange() ? (
           <>
-            <span className="delay-indicator sr-only">
-              Delayed by {getDelayMinutes()} minutes
+            <span className="aimed-time" aria-hidden="true">
+              {formatTime(call.aimedArrivalTime)}
+            </span>
+            <span className="sr-only">
+              Scheduled departure {formatTime(call.aimedArrivalTime)}
+            </span>
+
+            <span className="expected-time" aria-hidden="true">
+              ({formatTime(call.expectedArrivalTime)})
+            </span>
+            <span className="sr-only">
+              Expected departure {formatTime(call.expectedArrivalTime)}, in{" "}
+              {getTimeUntilDeparture(call.expectedArrivalTime)}
+            </span>
+
+            {isDelayed() && (
+              <span className="delay-indicator sr-only">
+                Delayed by {getDelayMinutes()} minutes
+              </span>
+            )}
+          </>
+        ) : (
+          <>
+            <span className="single-time" aria-hidden="true">
+              {formatTime(call.expectedArrivalTime)}
+            </span>
+            <span className="sr-only">
+              Departure time {formatTime(call.expectedArrivalTime)}, in{" "}
+              {getTimeUntilDeparture(call.expectedArrivalTime)}
             </span>
           </>
         )}
