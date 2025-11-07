@@ -95,35 +95,37 @@ function BusDeparture({ call }: BusDepartureProps) {
       </div>
 
       <div className="time-info">
-        {hasTimeChange() ? (
-          <>
-            <span className="aimed-time" aria-hidden="true">
-              {formatTime(call.aimedArrivalTime)}
-            </span>
-            <span className="sr-only">
-              Scheduled departure {formatTime(call.aimedArrivalTime)}
-            </span>
+        <div className="time-display">
+          {hasTimeChange() ? (
+            <>
+              <span className="aimed-time" aria-hidden="true">
+                {formatTime(call.aimedArrivalTime)}
+              </span>
+              <span className="sr-only">
+                Scheduled departure {formatTime(call.aimedArrivalTime)}
+              </span>
 
-            <span className="expected-time" aria-hidden="true">
-              {formatTime(call.expectedArrivalTime)}
-            </span>
-            <span className="sr-only">
-              Expected departure {formatTime(call.expectedArrivalTime)}, in{" "}
-              {getTimeUntilDeparture(call.expectedArrivalTime)}
-              {isDelayed() && `, delayed by ${getDelayMinutes()} minutes`}
-            </span>
-          </>
-        ) : (
-          <>
-            <span className="single-time" aria-hidden="true">
-              {formatTime(call.expectedArrivalTime)}
-            </span>
-            <span className="sr-only">
-              Departure time {formatTime(call.expectedArrivalTime)}, in{" "}
-              {getTimeUntilDeparture(call.expectedArrivalTime)}
-            </span>
-          </>
-        )}
+              <span className="expected-time" aria-hidden="true">
+                {formatTime(call.expectedArrivalTime)}
+              </span>
+              <span className="sr-only">
+                Expected departure {formatTime(call.expectedArrivalTime)}, in{" "}
+                {getTimeUntilDeparture(call.expectedArrivalTime)}
+                {isDelayed() && `, delayed by ${getDelayMinutes()} minutes`}
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="single-time" aria-hidden="true">
+                {formatTime(call.expectedArrivalTime)}
+              </span>
+              <span className="sr-only">
+                Departure time {formatTime(call.expectedArrivalTime)}, in{" "}
+                {getTimeUntilDeparture(call.expectedArrivalTime)}
+              </span>
+            </>
+          )}
+        </div>
 
         {call.realtime && (
           <>
