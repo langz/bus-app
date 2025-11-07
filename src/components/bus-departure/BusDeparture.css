@@ -78,14 +78,7 @@
   line-height: 1;
 }
 
-.delay-indicator {
-  color: #dc3545;
-  font-size: 0.75rem;
-  font-weight: bold;
-  background: #f8d7da;
-  padding: 0.125rem 0.375rem;
-  border-radius: 3px;
-}
+
 
 .realtime-indicator {
   color: #28a745;

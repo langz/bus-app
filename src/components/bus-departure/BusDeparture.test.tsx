@@ -50,12 +50,9 @@ describe("BusDeparture", () => {
     // When times differ, it shows both aimed and expected times
     const aimedTimeElement = document.querySelector(".aimed-time");
     const expectedTimeElement = document.querySelector(".expected-time");
-    const delayIndicator = document.querySelector(".delay-indicator");
 
     expect(aimedTimeElement).toBeInTheDocument();
     expect(expectedTimeElement).toBeInTheDocument();
-    expect(delayIndicator).toBeInTheDocument();
-    expect(delayIndicator?.textContent).toBe(" +5m");
   });
 
   it("shows realtime indicator when realtime is true", () => {

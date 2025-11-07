@@ -106,9 +106,6 @@ function BusDeparture({ call }: BusDepartureProps) {
 
             <span className="expected-time" aria-hidden="true">
               {formatTime(call.expectedArrivalTime)}
-              {isDelayed() && (
-                <span className="delay-indicator"> +{getDelayMinutes()}m</span>
-              )}
             </span>
             <span className="sr-only">
               Expected departure {formatTime(call.expectedArrivalTime)}, in{" "}
