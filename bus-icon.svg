@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <style>
+    .bus { fill: #ff6b35; }
+    .window { fill: #87ceeb; }
+    .wheel { fill: #333; }
+    .detail { fill: #333; }
+  </style>
+  
+  <!-- Bus body -->
+  <rect class="bus" x="4" y="8" width="24" height="16" rx="2"/>
+  
+  <!-- Windows -->
+  <rect class="window" x="6" y="10" width="4" height="4"/>
+  <rect class="window" x="12" y="10" width="4" height="4"/>
+  <rect class="window" x="18" y="10" width="4" height="4"/>
+  <rect class="window" x="24" y="10" width="3" height="4"/>
+  
+  <!-- Door -->
+  <rect class="detail" x="8" y="16" width="3" height="6"/>
+  
+  <!-- Wheels -->
+  <circle class="wheel" cx="10" cy="26" r="3"/>
+  <circle class="wheel" cx="22" cy="26" r="3"/>
+  
+  <!-- Front -->
+  <rect class="detail" x="2" y="10" width="2" height="12"/>
+</svg>
