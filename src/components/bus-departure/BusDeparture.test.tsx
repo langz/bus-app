@@ -55,30 +55,6 @@ describe("BusDeparture", () => {
     expect(expectedTimeElement).toBeInTheDocument();
   });
 
-  it("shows realtime indicator when realtime is true", () => {
-    render(<BusDeparture call={mockCall} />);
-
-    const realtimeIndicator = document.querySelector(".realtime-indicator");
-    expect(realtimeIndicator).toBeInTheDocument();
-    expect(realtimeIndicator).toHaveTextContent("●");
-  });
-
-  it("does not show realtime indicator when realtime is false", () => {
-    const nonRealtimeCall = { ...mockCall, realtime: false };
-    render(<BusDeparture call={nonRealtimeCall} />);
-
-    expect(
-      document.querySelector(".realtime-indicator")
-    ).not.toBeInTheDocument();
-  });
-
-  it("has accessibility attributes", () => {
-    render(<BusDeparture call={mockCall} />);
-
-    const realtimeIndicator = document.querySelector(".realtime-indicator");
-    expect(realtimeIndicator).toHaveAttribute("title", "Real-time data");
-  });
-
   it("handles different time formats correctly", () => {
     const callWithDifferentTime: BusCall = {
       ...mockCall,

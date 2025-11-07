@@ -115,21 +115,6 @@ function TimeDisplay({ call }: TimeDisplayProps) {
   );
 }
 
-function RealtimeIndicator() {
-  return (
-    <>
-      <span
-        className="realtime-indicator"
-        aria-hidden="true"
-        title="Real-time data"
-      >
-        ●
-      </span>
-      <span className="sr-only">Real-time data available</span>
-    </>
-  );
-}
-
 // Main Component
 function BusDeparture({ call }: BusDepartureProps) {
   // Create comprehensive screen reader description
@@ -151,9 +136,7 @@ function BusDeparture({ call }: BusDepartureProps) {
       timeInfo += ` at ${departureTime}`;
     }
 
-    const realtimeInfo = call.realtime ? " Real-time data available." : "";
-
-    return `Bus line ${lineNumber} to ${destination}. ${timeInfo}.${realtimeInfo}`;
+    return `Bus line ${lineNumber} to ${destination}. ${timeInfo}.`;
   };
 
   return (
@@ -170,7 +153,6 @@ function BusDeparture({ call }: BusDepartureProps) {
 
       <div className="time-info">
         <TimeDisplay call={call} />
-        {call.realtime && <RealtimeIndicator />}
       </div>
     </div>
   );

@@ -167,18 +167,4 @@ describe("App", () => {
       expect(departureItems).toHaveLength(2);
     });
   });
-
-  it("shows realtime indicators correctly", async () => {
-    mockFetchDepartures.mockResolvedValueOnce(mockStopPlaceData);
-
-    render(<App />);
-
-    await waitFor(() => {
-      // First arrival has realtime: true, second has realtime: false
-      const realtimeIndicators = document.querySelectorAll(
-        ".realtime-indicator"
-      );
-      expect(realtimeIndicators).toHaveLength(1);
-    });
-  });
 });

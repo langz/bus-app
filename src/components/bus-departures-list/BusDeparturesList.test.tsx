@@ -66,12 +66,4 @@ describe("BusDeparturesList", () => {
     const arrivalItems = document.querySelectorAll(".departure-item");
     expect(arrivalItems).toHaveLength(1);
   });
-
-  it("shows realtime indicators correctly", () => {
-    render(<BusDeparturesList departures={mockDepartures} />);
-
-    // First arrival has realtime: true, second has realtime: false
-    const realtimeIndicators = document.querySelectorAll(".realtime-indicator");
-    expect(realtimeIndicators).toHaveLength(1);
-  });
 });

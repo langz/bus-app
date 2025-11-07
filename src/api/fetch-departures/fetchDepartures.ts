@@ -14,7 +14,6 @@ export async function fetchDepartures(): Promise<StopPlaceResponse> {
       whiteListedModes: bus
       arrivalDeparture: departures
     ) {
-      realtime
       serviceJourney {
         line {
           publicCode
