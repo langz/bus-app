@@ -69,7 +69,7 @@ describe("App", () => {
     render(<App />);
 
     await waitFor(() => {
-      expect(screen.getByText("🚌 Bus Departures")).toBeInTheDocument();
+      expect(screen.getByText("Bus Departures")).toBeInTheDocument();
       expect(screen.getByText("Jernbanetorget")).toBeInTheDocument();
       expect(screen.getByText("21")).toBeInTheDocument();
       expect(screen.getByText("Sentrum")).toBeInTheDocument();
@@ -127,7 +127,7 @@ describe("App", () => {
       expect(screen.getByText("Jernbanetorget")).toBeInTheDocument();
     });
 
-    const refreshButton = screen.getByText("🔄 Refresh");
+    const refreshButton = screen.getByRole("button", { name: /refresh/i });
     expect(refreshButton).toBeInTheDocument();
 
     await user.click(refreshButton);
@@ -151,7 +151,9 @@ describe("App", () => {
     render(<App />);
 
     await waitFor(() => {
-      expect(screen.getByText("No departures available")).toBeInTheDocument();
+      expect(screen.getByRole("main")).toHaveTextContent(
+        "No departures available"
+      );
     });
   });
 

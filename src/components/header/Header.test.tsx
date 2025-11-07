@@ -6,7 +6,7 @@ describe("Header", () => {
   it("renders the main title", () => {
     render(<Header />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "🚌 Bus Departures"
+      "Bus Departures"
     );
   });
 

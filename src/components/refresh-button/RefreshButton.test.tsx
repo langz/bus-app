@@ -7,7 +7,9 @@ describe("RefreshButton", () => {
     const mockOnClick = vi.fn();
     render(<RefreshButton onClick={mockOnClick} />);
 
-    const button = screen.getByRole("button", { name: "🔄 Refresh" });
+    const button = screen.getByRole("button", {
+      name: /refresh departure information/i,
+    });
     expect(button).toBeInTheDocument();
   });
 
