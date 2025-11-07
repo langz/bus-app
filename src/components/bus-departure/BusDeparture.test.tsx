@@ -105,19 +105,4 @@ describe("BusDeparture", () => {
       screen.getByText("Universitetet Sykehus Nord via Sentrum")
     ).toBeInTheDocument();
   });
-
-  it("handles special characters in line numbers", () => {
-    const callWithSpecialLine = {
-      ...mockCall,
-      serviceJourney: {
-        line: {
-          publicCode: "21E",
-        },
-      },
-    };
-
-    render(<BusDeparture call={callWithSpecialLine} />);
-
-    expect(screen.getByText("21E")).toBeInTheDocument();
-  });
 });

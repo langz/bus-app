@@ -49,7 +49,7 @@ export async function fetchDepartures(): Promise<StopPlaceResponse> {
 
   if (data.errors) {
     throw new Error(
-      `GraphQL errors: ${data.errors
+      `Errors: ${data.errors
         .map((e: { message: string }) => e.message)
         .join(", ")}`
     );
