@@ -54,7 +54,7 @@ function App() {
       
       <Header title={stopPlace?.name} />
 
-      <main role="main" aria-label="Bus departure information">
+      <main aria-label="Bus departure information">
         {stopPlace?.estimatedCalls && stopPlace.estimatedCalls.length > 0 ? (
           <BusDeparturesList departures={stopPlace.estimatedCalls} />
         ) : (
