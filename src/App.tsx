@@ -24,8 +24,13 @@ function App() {
       setAnnouncement("Loading bus departures...");
       const stopPlaceData = await fetchDepartures();
       setData(stopPlaceData);
-      const departureCount = stopPlaceData?.data?.stopPlace?.estimatedCalls?.length || 0;
-      setAnnouncement(departureCount > 0 ? `Loaded ${departureCount} departures` : "No departures available");
+      const departureCount =
+        stopPlaceData?.data?.stopPlace?.estimatedCalls?.length || 0;
+      setAnnouncement(
+        departureCount > 0
+          ? `Loaded ${departureCount} departures`
+          : "No departures available"
+      );
     } catch (err: unknown) {
       const errorMessage = "An unexpected error occurred";
       setError(errorMessage);
@@ -51,7 +56,7 @@ function App() {
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {announcement}
       </div>
-      
+
       <Header title={stopPlace?.name} />
 
       <main aria-label="Bus departure information">
